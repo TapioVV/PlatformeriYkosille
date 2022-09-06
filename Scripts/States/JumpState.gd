@@ -25,17 +25,18 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Jump"):
 		player.jumpPressed = true
 		player.timer.start(player.jumpBufferTime)
-		
+
 	if player.is_on_floor():
 		if !player.timer.is_stopped():
 			if player.jumpPressed == false:
 				player.smallJumpStart = true
-			else:
+				change_state.call_func("jump")
+			elif player.jumpPressed == true:
 				player.smallJumpStart = false
-			
 			change_state.call_func("jump")
 		if player.velocity.x != 0:
 			change_state.call_func("run")
 		else:
 			change_state.call_func("idle")
+
 	player.velocity.y += player.gravity * delta

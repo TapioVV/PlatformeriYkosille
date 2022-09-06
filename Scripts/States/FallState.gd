@@ -9,11 +9,20 @@ func _physics_process(delta):
 	else:
 		player.velocity.x = move_toward(player.velocity.x, player.inputVector*player.maxHorizontalSpeed, player.ACCELERATION*delta/player.jumpControlAcceleration)
 
+	if Input.is_action_just_released("Jump"):
+		player.jumpPressed = false
+
 	if Input.is_action_just_pressed("Jump"):
 		player.timer.start(player.jumpBufferTime)
+		player.jumpPressed = true
 	if player.is_on_floor():
 		if !player.timer.is_stopped():
+			if player.jumpPressed == false:
+				player.smallJumpStart = true
+			elif player.jumpPressed == true:
+				player.smallJumpStart = false
 			change_state.call_func("jump")
+		
 		if player.velocity.x != 0:
 			change_state.call_func("run")
 		else:
