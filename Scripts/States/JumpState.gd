@@ -39,4 +39,8 @@ func _physics_process(delta):
 		else:
 			change_state.call_func("idle")
 
+	if player.is_on_ceiling():
+		player.velocity.y = 0
+
+
 	player.velocity.y += player.gravity * delta

@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/States/JumpState.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Player.gd"
-}, {
 "base": "Node2D",
 "class": "PlayerState",
 "language": "GDScript",
@@ -48,7 +43,6 @@ _global_script_class_icons={
 "FallState": "",
 "IdleState": "",
 "JumpState": "",
-"Player": "",
 "PlayerState": "",
 "RunState": "",
 "StateMachine": ""
