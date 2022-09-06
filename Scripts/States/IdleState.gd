@@ -11,9 +11,8 @@ func _physics_process(_delta):
 	elif Input.is_action_pressed("Right"):
 		move_right()
 	if Input.is_action_just_pressed("Jump") and player.is_on_floor():
-		print("Jump")
+		player.smallJumpStart = false
 		change_state.call_func("jump")
-		print("Jumped")
 	if not player.is_on_floor():
 		change_state.call_func("fall")
 
