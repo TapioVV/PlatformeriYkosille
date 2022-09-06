@@ -2,9 +2,6 @@ extends PlayerState
 
 class_name RunState
 
-func _ready():
-	player.smallJumpStart = false
-
 func _physics_process(delta):
 	if Input.is_action_just_pressed("Jump") and player.is_on_floor():
 		change_state.call_func("jump")

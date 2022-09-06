@@ -2,53 +2,7 @@
 
 [ext_resource path="res://Sprites/icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/TongueArea.gd" type="Script" id=2]
-
-[sub_resource type="GDScript" id=4]
-script/source = "extends KinematicBody2D
-
-const ACCELERATION = 2800
-const DEACCELERATION = 3800
-
-export(float) var timeToJumpPeak = .3
-export(int) var jumpHeight = 15
-export(int) var jumpDistance = 150
-export(float) var jumpBufferTime
-export(float) var smallJump
-
-#Less is more
-export(int) var jumpControlDeacceleration
-export(int) var jumpControlAcceleration 
-
-onready var timer = get_node(\"JumpTimer\")
-var state
-var state_machine
-var velocity = Vector2.ZERO
-var inputVector: float
-
-var maxHorizontalSpeed: float
-var gravity: float
-var jumpSpeed: float
-var smallJumpStart: bool = false
-var jumpPressed: bool = false
-
-func _ready():
-	gravity = (2*jumpHeight)/pow(timeToJumpPeak,2)
-	jumpSpeed = gravity * timeToJumpPeak
-	maxHorizontalSpeed = jumpDistance / (2*timeToJumpPeak)
-	state_machine = StateMachine.new()
-	change_state(\"idle\")
-
-func change_state(new_state_name):
-	if state != null:
-		state.queue_free()
-	state = state_machine.get_state(new_state_name).new()
-	state.setup(funcref(self, \"change_state\"), self)
-	state.name = \"current_state\"
-	add_child(state)
-
-func _physics_process(_delta):
-	move_and_slide(velocity, Vector2.UP)
-"
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 32 )
@@ -58,14 +12,14 @@ length = 84.67
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 position = Vector2( 6.10352e-05, 6.10352e-05 )
-script = SubResource( 4 )
-timeToJumpPeak = 0.48
-jumpHeight = 125
+script = ExtResource( 3 )
+timeToJumpPeak = 0.4
+jumpHeight = 120
 jumpDistance = 325
-jumpBufferTime = 0.21
+jumpBufferTime = 0.2
 smallJump = 1.5
 jumpControlDeacceleration = 8
-jumpControlAcceleration = 3
+jumpControlAcceleration = 4
 
 [node name="Icon" type="Sprite" parent="."]
 texture = ExtResource( 1 )

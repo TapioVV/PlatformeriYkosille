@@ -23,8 +23,8 @@ visible = false
 shape = SubResource( 2 )
 
 [node name="WhitePixel2" type="Sprite" parent="."]
-position = Vector2( 109, 393.11 )
-scale = Vector2( 34.23, 7.77759 )
+position = Vector2( 109, 434.162 )
+scale = Vector2( 34.23, 48.8296 )
 texture = ExtResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="WhitePixel2"]

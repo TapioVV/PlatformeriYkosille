@@ -2,6 +2,9 @@ extends PlayerState
 
 class_name FallState
 
+#func _ready():
+#	player.velocity.y = 0
+
 func _physics_process(delta):
 	player.inputVector = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 	if player.inputVector == 0:

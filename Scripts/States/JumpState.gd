@@ -3,6 +3,7 @@ extends PlayerState
 class_name JumpState
 
 func _ready():
+#	player.velocity.y = 0
 	if player.smallJumpStart == true:
 		player.velocity.y = -player.jumpSpeed
 		player.velocity.y = player.velocity.y / player.smallJump
