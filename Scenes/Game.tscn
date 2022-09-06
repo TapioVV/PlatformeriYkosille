@@ -44,16 +44,3 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WhitePixel/StaticBody2D"]
 visible = false
 shape = SubResource( 2 )
-
-[node name="WhitePixel2" type="Sprite" parent="."]
-position = Vector2( 689, 538 )
-rotation = -0.642469
-scale = Vector2( 506.46, 26.42 )
-texture = ExtResource( 2 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="WhitePixel2"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WhitePixel2/StaticBody2D"]
-visible = false
-shape = SubResource( 2 )
