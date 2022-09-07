@@ -75,3 +75,4 @@ position = Vector2( 875, 404.962 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 331, 318.044 )
+attackTime = 0.0

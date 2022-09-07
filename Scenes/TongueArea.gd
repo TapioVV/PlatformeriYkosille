@@ -11,4 +11,3 @@ func _on_TongueArea_body_entered(body):
 	for n in hitBodies:
 		if n.is_in_group("breakable"):
 			n.queue_free()
-

@@ -3,12 +3,11 @@ extends PlayerState
 class_name JumpState
 
 func _ready():
-#	player.velocity.y = 0
+	player.velocity.y = -player.jumpSpeed
 	if player.smallJumpStart == true:
-		player.velocity.y = -player.jumpSpeed
 		player.velocity.y = player.velocity.y / player.smallJump
 	else:
-		player.velocity.y = -player.jumpSpeed
+		null
 	player.smallJumpStart == false
 
 func _physics_process(delta):
@@ -18,6 +17,9 @@ func _physics_process(delta):
 	else:
 		player.velocity.x = move_toward(player.velocity.x, player.inputVector*player.maxHorizontalSpeed, player.ACCELERATION*delta/player.jumpControlAcceleration)
 
+	if Input.is_action_just_pressed("Attack"):
+		change_state.call_func("airattack")
+
 	if Input.is_action_just_released("Jump"):
 		player.jumpPressed = false
 		if player.velocity.y < 0:
@@ -25,10 +27,10 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("Jump"):
 		player.jumpPressed = true
-		player.timer.start(player.jumpBufferTime)
+		player.jumpTimer.start(player.jumpBufferTime)
 
 	if player.is_on_floor():
-		if !player.timer.is_stopped():
+		if !player.jumpTimer.is_stopped():
 			if player.jumpPressed == false:
 				player.smallJumpStart = true
 				change_state.call_func("jump")

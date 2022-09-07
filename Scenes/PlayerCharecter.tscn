@@ -18,6 +18,7 @@ jumpHeight = 120
 jumpDistance = 325
 jumpBufferTime = 0.2
 smallJump = 1.5
+attackTime = 1.0
 jumpControlDeacceleration = 8
 jumpControlAcceleration = 4
 
@@ -29,6 +30,9 @@ position = Vector2( -6.10352e-05, -6.10948e-05 )
 shape = SubResource( 1 )
 
 [node name="JumpTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="TongueArea" type="Area2D" parent="."]

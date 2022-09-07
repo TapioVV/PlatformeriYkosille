@@ -10,6 +10,8 @@ func _init():
 		"run": RunState,
 		"jump": JumpState,
 		"fall": FallState,
+		"groundattack": GroundAttackState,
+		"airattack": AirAttackState,
 	}
 
 

@@ -10,12 +10,14 @@ export(int) var jumpHeight = 15
 export(int) var jumpDistance = 150
 export(float) var jumpBufferTime
 export(float) var smallJump
+export(float) var attackTime
 
 #Less is more
 export(int) var jumpControlDeacceleration
 export(int) var jumpControlAcceleration 
 
-onready var timer = get_node("JumpTimer")
+onready var jumpTimer = get_node("JumpTimer")
+onready var attackTimer = get_node("AttackTimer")
 var state
 var state_machine
 var velocity = Vector2.ZERO
@@ -42,5 +44,10 @@ func change_state(new_state_name):
 	state.name = "current_state"
 	add_child(state)
 
+func attack():
+	attackTimer.start(attackTime)
+
+
 func _physics_process(_delta):
+	print(velocity.y)
 	move_and_slide(velocity, Vector2.UP)
