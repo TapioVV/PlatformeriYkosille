@@ -22,7 +22,7 @@ attackTime = 1.0
 jumpControlDeacceleration = 8
 jumpControlAcceleration = 4
 
-[node name="Icon" type="Sprite" parent="."]
+[node name="CharacterSprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,9 +30,6 @@ position = Vector2( -6.10352e-05, -6.10948e-05 )
 shape = SubResource( 1 )
 
 [node name="JumpTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="TongueArea" type="Area2D" parent="."]
@@ -43,5 +40,8 @@ script = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TongueArea"]
 rotation = -1.5708
 shape = SubResource( 5 )
+
+[node name="AttackTimer" type="Timer" parent="TongueArea"]
+one_shot = true
 
 [connection signal="body_entered" from="TongueArea" to="TongueArea" method="_on_TongueArea_body_entered"]

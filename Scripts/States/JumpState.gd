@@ -30,6 +30,10 @@ func _physics_process(delta):
 		player.jumpTimer.start(player.jumpBufferTime)
 
 	if player.is_on_floor():
+		if player.velocity.x != 0:
+			change_state.call_func("run")
+		else:
+			change_state.call_func("idle")
 		if !player.jumpTimer.is_stopped():
 			if player.jumpPressed == false:
 				player.smallJumpStart = true
@@ -37,10 +41,6 @@ func _physics_process(delta):
 			elif player.jumpPressed == true:
 				player.smallJumpStart = false
 			change_state.call_func("jump")
-		if player.velocity.x != 0:
-			change_state.call_func("run")
-		else:
-			change_state.call_func("idle")
 
 	if player.is_on_ceiling():
 		player.velocity.y = 0
