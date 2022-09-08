@@ -6,8 +6,6 @@ func _ready():
 	player.velocity.y = -player.jumpSpeed
 	if player.smallJumpStart == true:
 		player.velocity.y = player.velocity.y / player.smallJump
-	else:
-		null
 	player.smallJumpStart == false
 
 func _physics_process(delta):

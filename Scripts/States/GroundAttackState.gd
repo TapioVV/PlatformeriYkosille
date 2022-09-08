@@ -8,7 +8,7 @@ func _ready():
 	player.attack()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player.attackTimer.is_stopped():
 		if player.is_on_floor():
 			change_state.call_func("idle")

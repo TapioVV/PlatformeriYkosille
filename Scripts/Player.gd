@@ -58,8 +58,10 @@ func attack():
 
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("Damage"):
-		damaged = true
-	
 	velocity.y = clamp(velocity.y, -1000, 600)
 	move_and_slide(velocity, Vector2.UP)
+
+
+func _on_DamageHitBox_body_entered(body):
+	if damaged == false:
+		damaged = true

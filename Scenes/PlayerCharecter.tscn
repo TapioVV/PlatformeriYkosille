@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Sprites/Aardvark/aardvark_idle.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Aardvark/aardvark_walk.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/TongueArea.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 
@@ -10,8 +10,13 @@ extents = Vector2( 9.5, 28 )
 [sub_resource type="RayShape2D" id=5]
 length = 68.5
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 9.5, 20 )
+
 [node name="PlayerBody" type="KinematicBody2D"]
 position = Vector2( 6.10352e-05, 6.10352e-05 )
+collision_layer = 2
+collision_mask = 9
 script = ExtResource( 3 )
 timeToJumpPeak = 0.4
 jumpHeight = 120
@@ -27,14 +32,15 @@ jumpControlAcceleration = 4
 scale = Vector2( 0.264835, 0.264835 )
 z_index = 1
 texture = ExtResource( 1 )
+hframes = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyHitBox" type="CollisionShape2D" parent="."]
 position = Vector2( 3.49994, 1.99994 )
 shape = SubResource( 1 )
 
 [node name="TongueArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 12
 script = ExtResource( 2 )
 
 [node name="TongueHitBox" type="CollisionShape2D" parent="TongueArea"]
@@ -50,6 +56,15 @@ one_shot = true
 [node name="DamageTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="DamageHitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="HitBox" type="CollisionShape2D" parent="DamageHitBox"]
+position = Vector2( 3.49994, 9.99997 )
+shape = SubResource( 6 )
+
 [connection signal="attacked" from="." to="TongueArea" method="_on_PlayerBody_attacked"]
 [connection signal="looked_left" from="." to="TongueArea" method="_on_PlayerBody_looked_left"]
 [connection signal="looked_right" from="." to="TongueArea" method="_on_PlayerBody_looked_right"]
+[connection signal="body_entered" from="DamageHitBox" to="." method="_on_DamageHitBox_body_entered"]

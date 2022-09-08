@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spritesheet_aardvark.png-0ab6733000ef56d4c1cba974011b295d.stex"
+path="res://.import/aardvark_tongue_eject.png-1436d842aafe3139ed38e766e8277f91.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Aardvark/spritesheet_aardvark.png"
-dest_files=[ "res://.import/spritesheet_aardvark.png-0ab6733000ef56d4c1cba974011b295d.stex" ]
+source_file="res://Sprites/Aardvark/aardvark_tongue_eject.png"
+dest_files=[ "res://.import/aardvark_tongue_eject.png-1436d842aafe3139ed38e766e8277f91.stex" ]
 
 [params]
 

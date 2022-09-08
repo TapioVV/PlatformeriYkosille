@@ -16,21 +16,24 @@ func _physics_process(delta):
 	move_and_slide(moveVector)
 
 
-func _on_RightWallChecker_body_entered(body):
+func _on_RightWallChecker_body_entered(_body):
 	moveVector.x = -moveSpeed
 	pass # Replace with function body.
 
 
-func _on_LeftWallChecker_body_entered(body):
+func _on_LeftWallChecker_body_entered(_body):
 	moveVector.x = moveSpeed
 	pass # Replace with function body.
 
 
-func _on_RightGroundChecker_body_exited(body):
+func _on_RightGroundChecker_body_exited(_body):
 	moveVector.x = -moveSpeed
 	pass # Replace with function body.
 
 
-func _on_LeftGroundChecker_body_exited(body):
+func _on_LeftGroundChecker_body_exited(_body):
 	moveVector.x = moveSpeed
 	pass # Replace with function body.
+
+func _on_get_hit():
+	queue_free()
