@@ -17,7 +17,7 @@ export(int) var jumpControlDeacceleration
 export(int) var jumpControlAcceleration 
 
 onready var jumpTimer = get_node("JumpTimer")
-onready var attackTimer = get_node("TongueArea/AttackTimer")
+onready var attackTimer = get_node("AttackTimer")
 onready var characterSprite = get_node("CharacterSprite")
 var state
 var state_machine
@@ -29,6 +29,10 @@ var gravity: float
 var jumpSpeed: float
 var smallJumpStart: bool = false
 var jumpPressed: bool = false
+
+signal attacked
+signal looked_left
+signal looked_right
 
 func _ready():
 	gravity = (2*jumpHeight)/pow(timeToJumpPeak,2)
@@ -47,6 +51,7 @@ func change_state(new_state_name):
 
 func attack():
 	attackTimer.start(attackTime)
+	emit_signal("attacked")
 
 
 func _physics_process(_delta):

@@ -13,8 +13,10 @@ func _physics_process(delta):
 		player.velocity.x = move_toward(player.velocity.x, player.inputVector*player.maxHorizontalSpeed, player.ACCELERATION*delta)
 
 	if player.inputVector == 1:
+		player.emit_signal("looked_right")
 		sprite.flip_v = false
 	if player.inputVector == -1:
+		player.emit_signal("looked_left")
 		sprite.flip_v = true
 
 	if player.velocity.x == 0:

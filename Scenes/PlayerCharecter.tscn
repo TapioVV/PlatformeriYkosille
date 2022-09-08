@@ -8,9 +8,9 @@
 extents = Vector2( 15, 32 )
 
 [sub_resource type="RayShape2D" id=5]
-length = 84.67
+length = 68.5
 
-[node name="KinematicBody2D" type="KinematicBody2D"]
+[node name="PlayerBody" type="KinematicBody2D"]
 position = Vector2( 6.10352e-05, 6.10352e-05 )
 script = ExtResource( 3 )
 timeToJumpPeak = 0.4
@@ -32,16 +32,18 @@ shape = SubResource( 1 )
 [node name="JumpTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="TongueArea" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TongueArea"]
+[node name="TongueHitBox" type="CollisionShape2D" parent="TongueArea"]
 rotation = -1.5708
 shape = SubResource( 5 )
 
-[node name="AttackTimer" type="Timer" parent="TongueArea"]
-one_shot = true
-
-[connection signal="body_entered" from="TongueArea" to="TongueArea" method="_on_TongueArea_body_entered"]
+[connection signal="attacked" from="." to="TongueArea" method="_on_PlayerBody_attacked"]
+[connection signal="looked_left" from="." to="TongueArea" method="_on_PlayerBody_looked_left"]
+[connection signal="looked_right" from="." to="TongueArea" method="_on_PlayerBody_looked_right"]
