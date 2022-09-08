@@ -22,6 +22,7 @@ func _physics_process(delta):
 	if player.velocity.x == 0:
 		change_state.call_func("idle")
 	if not player.is_on_floor():
+		player.velocity.y = 0
 		change_state.call_func("fall")
 	if Input.is_action_just_pressed("Attack"):
 		change_state.call_func("groundattack")

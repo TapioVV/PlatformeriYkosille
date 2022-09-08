@@ -29,3 +29,11 @@ position = Vector2( 638, 447.434 )
 position = Vector2( 508, 321.994 )
 scale = Vector2( 1, 1.00912 )
 current = true
+
+[node name="WhiteBlock3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 795, 315.08 )
+scale = Vector2( 68, 8.88941 )
+
+[node name="WhiteBlock4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 542, 195.567 )
+scale = Vector2( 68, 8.88941 )
