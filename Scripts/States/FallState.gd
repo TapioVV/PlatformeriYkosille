@@ -33,6 +33,9 @@ func _physics_process(delta):
 				player.smallJumpStart = false
 			change_state.call_func("jump")
 
+	if player.damaged == true:
+		change_state.call_func("damaged")
+
 	if player.is_on_ceiling():
 		player.velocity.y = 0
 	player.velocity.y += player.gravity * delta

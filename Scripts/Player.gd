@@ -11,6 +11,7 @@ export(int) var jumpDistance = 150
 export(float) var jumpBufferTime
 export(float) var smallJump
 export(float) var attackTime
+export(float) var damageTime
 
 #Less is more
 export(int) var jumpControlDeacceleration
@@ -18,6 +19,7 @@ export(int) var jumpControlAcceleration
 
 onready var jumpTimer = get_node("JumpTimer")
 onready var attackTimer = get_node("AttackTimer")
+onready var damageTimer = get_node("DamageTimer")
 onready var characterSprite = get_node("CharacterSprite")
 var state
 var state_machine
@@ -29,6 +31,7 @@ var gravity: float
 var jumpSpeed: float
 var smallJumpStart: bool = false
 var jumpPressed: bool = false
+var damaged: bool = false
 
 signal attacked
 signal looked_left
@@ -56,7 +59,7 @@ func attack():
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("Damage"):
-		change_state("damaged")
+		damaged = true
 	
 	velocity.y = clamp(velocity.y, -1000, 600)
 	move_and_slide(velocity, Vector2.UP)

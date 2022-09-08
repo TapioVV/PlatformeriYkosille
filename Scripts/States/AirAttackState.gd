@@ -25,3 +25,7 @@ func _physics_process(delta):
 			change_state.call_func("idle")
 		elif not player.is_on_floor():
 			change_state.call_func("fall")
+
+	if player.damaged == true:
+		change_state.call_func("damaged")
+

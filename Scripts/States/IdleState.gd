@@ -16,6 +16,8 @@ func _physics_process(_delta):
 		change_state.call_func("groundattack")
 	if Input.is_action_just_pressed("Jump") and player.is_on_floor():
 		change_state.call_func("jump")
+	if player.damaged == true:
+		change_state.call_func("damaged")
 
 
 func move_left():

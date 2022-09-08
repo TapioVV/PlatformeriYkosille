@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 37.9436, 110 )
+extents = Vector2( 9.5, 28 )
 
 [sub_resource type="RayShape2D" id=5]
 length = 68.5
@@ -19,21 +19,18 @@ jumpDistance = 325
 jumpBufferTime = 0.2
 smallJump = 1.5
 attackTime = 1.0
+damageTime = 0.5
 jumpControlDeacceleration = 8
 jumpControlAcceleration = 4
 
 [node name="CharacterSprite" type="Sprite" parent="."]
+scale = Vector2( 0.264835, 0.264835 )
+z_index = 1
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 10.0563, 3.99994 )
+position = Vector2( 3.49994, 1.99994 )
 shape = SubResource( 1 )
-
-[node name="JumpTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="AttackTimer" type="Timer" parent="."]
-one_shot = true
 
 [node name="TongueArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -43,6 +40,15 @@ script = ExtResource( 2 )
 [node name="TongueHitBox" type="CollisionShape2D" parent="TongueArea"]
 rotation = -1.5708
 shape = SubResource( 5 )
+
+[node name="JumpTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DamageTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="attacked" from="." to="TongueArea" method="_on_PlayerBody_attacked"]
 [connection signal="looked_left" from="." to="TongueArea" method="_on_PlayerBody_looked_left"]
