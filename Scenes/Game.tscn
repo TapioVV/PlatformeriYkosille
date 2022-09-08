@@ -19,11 +19,13 @@ attackTime = 0.0
 position = Vector2( 188, 410.889 )
 
 [node name="WhiteBlock" parent="." instance=ExtResource( 2 )]
-position = Vector2( 511.5, 542.254 )
-scale = Vector2( 509.5, 50 )
+position = Vector2( 578, 542.254 )
+scale = Vector2( 443, 50 )
 
 [node name="WhiteBlock2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 638, 447.434 )
 
-[node name="WhiteBlock3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 63, 450.397 )
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 508, 321.994 )
+current = true
+zoom = Vector2( 2.5, 2.5 )

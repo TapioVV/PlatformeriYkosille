@@ -14,10 +14,10 @@ func _physics_process(delta):
 
 	if player.inputVector == 1:
 		player.emit_signal("looked_right")
-		sprite.flip_v = false
+		sprite.flip_h = false
 	if player.inputVector == -1:
 		player.emit_signal("looked_left")
-		sprite.flip_v = true
+		sprite.flip_h = true
 
 	if player.velocity.x == 0:
 		change_state.call_func("idle")

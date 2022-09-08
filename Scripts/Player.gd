@@ -55,5 +55,8 @@ func attack():
 
 
 func _physics_process(_delta):
+	if Input.is_action_just_pressed("Damage"):
+		change_state("damaged")
+	
 	velocity.y = clamp(velocity.y, -1000, 600)
 	move_and_slide(velocity, Vector2.UP)

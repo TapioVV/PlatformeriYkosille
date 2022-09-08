@@ -12,6 +12,7 @@ func _init():
 		"fall": FallState,
 		"groundattack": GroundAttackState,
 		"airattack": AirAttackState,
+		"damaged": DamagedState
 	}
 
 

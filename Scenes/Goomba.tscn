@@ -56,6 +56,8 @@ collision_mask = 4
 position = Vector2( -35, 0 )
 shape = SubResource( 2 )
 
+[node name="HitBox" type="Area2D" parent="."]
+
 [connection signal="body_entered" from="RightWallChecker" to="." method="_on_RightWallChecker_body_entered"]
 [connection signal="body_entered" from="LeftWallChecker" to="." method="_on_LeftWallChecker_body_entered"]
 [connection signal="body_exited" from="RightGroundChecker" to="." method="_on_RightGroundChecker_body_exited"]
