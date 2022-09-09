@@ -21,6 +21,7 @@ onready var jumpTimer = get_node("JumpTimer")
 onready var attackTimer = get_node("AttackTimer")
 onready var damageTimer = get_node("DamageTimer")
 onready var characterSprite = get_node("CharacterSprite")
+onready var animationPlayer = get_node("AnimationPlayer")
 var state
 var state_machine
 var velocity = Vector2.ZERO
@@ -34,6 +35,7 @@ var jumpPressed: bool = false
 var damaged: bool = false
 
 signal attacked
+signal attack_stopped
 signal looked_left
 signal looked_right
 
@@ -48,13 +50,16 @@ func change_state(new_state_name):
 	if state != null:
 		state.queue_free()
 	state = state_machine.get_state(new_state_name).new()
-	state.setup(funcref(self, "change_state"), self, characterSprite)
+	state.setup(funcref(self, "change_state"), self, characterSprite, animationPlayer)
 	state.name = "current_state"
 	add_child(state)
 
 func attack():
 	attackTimer.start(attackTime)
 	emit_signal("attacked")
+
+func attack_stopped():
+	emit_signal("attack_stopped")
 
 
 func _physics_process(_delta):

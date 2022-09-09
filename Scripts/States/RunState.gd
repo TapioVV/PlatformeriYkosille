@@ -3,6 +3,7 @@ extends PlayerState
 class_name RunState
 
 func _ready():
+	animation_player.play("AardvarkWalkAnim")
 	player.velocity.y = 0
 
 func _physics_process(delta):
@@ -18,6 +19,8 @@ func _physics_process(delta):
 	if player.inputVector == -1:
 		player.emit_signal("looked_left")
 		sprite.flip_h = true
+
+	player.smallJumpStart = false
 
 	if player.velocity.x == 0:
 		change_state.call_func("idle")

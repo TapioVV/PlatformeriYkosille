@@ -3,6 +3,7 @@ extends PlayerState
 class_name AirAttackState
 
 func _ready():
+	animation_player.play("AardvarkAttackAnim")
 	player.attack()
 
 
@@ -21,6 +22,7 @@ func _physics_process(delta):
 	player.velocity.y += player.gravity * delta
 
 	if player.attackTimer.is_stopped():
+		player.attack_stopped()
 		if player.is_on_floor():
 			change_state.call_func("idle")
 		elif not player.is_on_floor():

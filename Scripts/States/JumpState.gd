@@ -3,6 +3,7 @@ extends PlayerState
 class_name JumpState
 
 func _ready():
+	animation_player.play("AardvarkJumpAnim")
 	player.velocity.y = -player.jumpSpeed
 	if player.smallJumpStart == true:
 		player.velocity.y = player.velocity.y / player.smallJump
@@ -14,6 +15,9 @@ func _physics_process(delta):
 		player.velocity.x = move_toward(player.velocity.x, 0, player.DEACCELERATION*delta/player.jumpControlDeacceleration)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, player.inputVector*player.maxHorizontalSpeed, player.ACCELERATION*delta/player.jumpControlAcceleration)
+
+	if player.velocity.y > 0:
+		animation_player.play("AardvarkFallAnim")
 
 	if Input.is_action_just_pressed("Attack"):
 		change_state.call_func("airattack")

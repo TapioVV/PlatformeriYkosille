@@ -3,6 +3,7 @@ extends PlayerState
 class_name IdleState
 
 func _ready():
+	animation_player.play("AardvarkIdleAnim")
 	player.velocity.y = 0
 
 func _physics_process(_delta):
@@ -19,6 +20,7 @@ func _physics_process(_delta):
 		change_state.call_func("jump")
 	if player.damaged == true:
 		change_state.call_func("damaged")
+	player.smallJumpStart = false
 
 
 func move_left():
