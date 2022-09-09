@@ -3,6 +3,7 @@ extends PlayerState
 class_name DamagedState
 
 func _ready():
+	animation_player.play("AardvarkDamagedAnim")
 	player.damageTimer.start(player.damageTime)
 	player.damaged = false
 	if sprite.is_flipped_h():

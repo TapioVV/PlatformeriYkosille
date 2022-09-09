@@ -20,6 +20,16 @@ _global_script_classes=[ {
 "path": "res://Scripts/States/DamagedState.gd"
 }, {
 "base": "PlayerState",
+"class": "DieLoopState",
+"language": "GDScript",
+"path": "res://Scripts/States/DieLoopState.gd"
+}, {
+"base": "PlayerState",
+"class": "DieState",
+"language": "GDScript",
+"path": "res://Scripts/States/DieState.gd"
+}, {
+"base": "PlayerState",
 "class": "FallState",
 "language": "GDScript",
 "path": "res://Scripts/States/FallState.gd"
@@ -62,6 +72,8 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AirAttackState": "",
 "DamagedState": "",
+"DieLoopState": "",
+"DieState": "",
 "FallState": "",
 "GroundAttackState": "",
 "IdleState": "",
