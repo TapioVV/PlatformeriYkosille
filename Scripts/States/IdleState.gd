@@ -7,10 +7,9 @@ func _ready():
 	player.velocity.y = 0
 
 func _physics_process(_delta):
-	if Input.is_action_pressed("Left"):
-		move_left()
-	elif Input.is_action_pressed("Right"):
-		move_right()
+	player.inputVector = Input.get_action_strength("Right") - Input.get_action_strength("Left")
+	if player.inputVector != 0:
+		change_state.call_func("run")
 	if not player.is_on_floor():
 		player.velocity.y = 0
 		change_state.call_func("fall")
@@ -22,13 +21,6 @@ func _physics_process(_delta):
 		change_state.call_func("damaged")
 	player.smallJumpStart = false
 
-
-func move_left():
-	change_state.call_func("run")
-
-
-func move_right():
-	change_state.call_func("run")
 
 
 

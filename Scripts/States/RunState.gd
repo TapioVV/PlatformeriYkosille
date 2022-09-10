@@ -22,7 +22,7 @@ func _physics_process(delta):
 
 	player.smallJumpStart = false
 
-	if player.velocity.x == 0:
+	if player.velocity.x >= -0.1 and player.velocity.x < 0.1:
 		change_state.call_func("idle")
 	if not player.is_on_floor():
 		player.velocity.y = 0
