@@ -3,7 +3,7 @@
 [ext_resource path="res://Sprites/Aardvark/aardvark_dead.png" type="Texture" id=1]
 
 [resource]
-resource_name = "AardvarkDeadLoopAnim"
+resource_name = "AardvarkDeadOnGroundAnim"
 length = 0.8
 loop = true
 tracks/0/type = "value"

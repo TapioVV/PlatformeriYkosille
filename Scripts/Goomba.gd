@@ -2,36 +2,39 @@ extends KinematicBody2D
 
 export(float) var moveSpeed
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+onready var sprite = get_node("GoombaSprite")
+onready var animationPlayer = get_node("AnimationPlayer")
 
 var moveVector
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
+	animationPlayer.play("GoombaWalkAnim")
 	moveVector = Vector2(moveSpeed, 50)
-	pass # Replace with function body.
 
 func _physics_process(delta):
 	move_and_slide(moveVector)
 
 
 func _on_RightWallChecker_body_entered(_body):
+	sprite.flip_h = false
 	moveVector.x = -moveSpeed
 	pass # Replace with function body.
 
 
 func _on_LeftWallChecker_body_entered(_body):
+	sprite.flip_h = true
 	moveVector.x = moveSpeed
 	pass # Replace with function body.
 
 
 func _on_RightGroundChecker_body_exited(_body):
+	sprite.flip_h = false
 	moveVector.x = -moveSpeed
 	pass # Replace with function body.
 
 
 func _on_LeftGroundChecker_body_exited(_body):
+	sprite.flip_h = true
 	moveVector.x = moveSpeed
 	pass # Replace with function body.
 

@@ -11,7 +11,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if player.attackTimer.is_stopped():
+	if player.attackEnded == true:
 		player.attack_stopped()
 		if player.is_on_floor():
 			change_state.call_func("idle")

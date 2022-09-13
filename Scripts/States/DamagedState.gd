@@ -16,9 +16,10 @@ func _physics_process(delta):
 	if player.is_on_floor():
 		player.velocity.x = 0
 	if player.damageTimer.is_stopped():
-		if player.is_on_floor():
-			change_state.call_func("idle")
-		if not player.is_on_floor():
-			change_state.call_func("fall")
+		change_state.call_func("die")
+#		if player.is_on_floor():
+#			change_state.call_func("idle")
+#		if not player.is_on_floor():
+#			change_state.call_func("fall")
 
 	player.velocity.y += player.gravity * delta

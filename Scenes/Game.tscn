@@ -6,14 +6,12 @@
 [ext_resource path="res://Scenes/Goomba.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
-scale = Vector2( 1, 1.01244 )
 
 [node name="BreakableBlock" parent="." instance=ExtResource( 3 )]
 position = Vector2( 99, 413.852 )
 
 [node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
 position = Vector2( 531, 382.245 )
-attackTime = 0.0
 
 [node name="GoombaBody" parent="." instance=ExtResource( 4 )]
 position = Vector2( 188, 410.889 )
@@ -33,7 +31,6 @@ position = Vector2( 436, 342.736 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 508, 321.994 )
-scale = Vector2( 1, 1.00912 )
 current = true
 
 [node name="WhiteBlock3" parent="." instance=ExtResource( 2 )]

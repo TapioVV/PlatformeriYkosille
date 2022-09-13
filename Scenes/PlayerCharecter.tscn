@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Sprites/Aardvark/aardvark_dead.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Aardvark/tongue_pieces.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/TongueArea.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://Animation/Aardvark/AardvarkFallAnim.tres" type="Animation" id=4]
@@ -9,7 +9,9 @@
 [ext_resource path="res://Animation/Aardvark/AardvarkWalkAnim.tres" type="Animation" id=7]
 [ext_resource path="res://Animation/Aardvark/AardvarkAttackAnim.tres" type="Animation" id=8]
 [ext_resource path="res://Animation/Aardvark/AardvarkDamagedAnim .tres" type="Animation" id=9]
-[ext_resource path="res://Animation/Aardvark/AardvarkDeadLoopAnim.tres" type="Animation" id=10]
+[ext_resource path="res://Animation/Aardvark/AardvarkDeadInAirAnim.tres" type="Animation" id=10]
+[ext_resource path="res://Animation/Aardvark/AardvarkDeadOnGroundAnim.tres" type="Animation" id=11]
+[ext_resource path="res://Sprites/Aardvark/aardvark_tongue_eject.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.5, 28 )
@@ -18,71 +20,7 @@ extents = Vector2( 9.5, 28 )
 extents = Vector2( 9.5, 20 )
 
 [sub_resource type="RayShape2D" id=5]
-length = 68.5
-
-[sub_resource type="Animation" id=7]
-resource_name = "AardvarkDeadAnim"
-length = 0.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("CharacterSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CharacterSprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CharacterSprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CharacterSprite:frame_coords")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 0, 1 ) ]
-}
-tracks/4/type = "method"
-tracks/4/path = NodePath(".")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
-}
+length = 72.0
 
 [node name="PlayerBody" type="KinematicBody2D"]
 position = Vector2( 6.10352e-05, 6.10352e-05 )
@@ -94,18 +32,17 @@ jumpHeight = 120
 jumpDistance = 325
 jumpBufferTime = 0.2
 smallJump = 1.5
-attackTime = 1.0
 damageTime = 0.5
+attackEnded = true
 jumpControlDeacceleration = 8
 jumpControlAcceleration = 4
 
 [node name="CharacterSprite" type="Sprite" parent="."]
-scale = Vector2( 0.264835, 0.264835 )
-z_index = 1
-texture = ExtResource( 1 )
-hframes = 4
-vframes = 2
-frame = 4
+scale = Vector2( 0.265, 0.265 )
+z_index = 2
+texture = ExtResource( 12 )
+hframes = 2
+frame = 1
 
 [node name="BodyHitBox" type="CollisionShape2D" parent="."]
 position = Vector2( 3.49994, 1.99994 )
@@ -125,8 +62,17 @@ collision_mask = 12
 script = ExtResource( 2 )
 
 [node name="TongueHitBox" type="CollisionShape2D" parent="TongueArea"]
+position = Vector2( 0, -12.0001 )
 rotation = -1.5708
 shape = SubResource( 5 )
+
+[node name="TongueSprite" type="Sprite" parent="TongueArea"]
+visible = false
+position = Vector2( 31.9999, -15.0001 )
+scale = Vector2( 0.307691, 0.307691 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 3
 
 [node name="JumpTimer" type="Timer" parent="."]
 one_shot = true
@@ -140,8 +86,8 @@ one_shot = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/AardvarkAttackAnim = ExtResource( 8 )
 anims/AardvarkDamagedAnim = ExtResource( 9 )
-anims/AardvarkDeadAnim = SubResource( 7 )
-anims/AardvarkDeadLoopAnim = ExtResource( 10 )
+anims/AardvarkDeadInAirAnim = ExtResource( 10 )
+anims/AardvarkDeadOnGroundAnim = ExtResource( 11 )
 anims/AardvarkFallAnim = ExtResource( 4 )
 anims/AardvarkIdleAnim = ExtResource( 5 )
 anims/AardvarkJumpAnim = ExtResource( 6 )

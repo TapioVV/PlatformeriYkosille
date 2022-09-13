@@ -13,8 +13,7 @@ func _init():
 		"groundattack": GroundAttackState,
 		"airattack": AirAttackState,
 		"damaged": DamagedState,
-		"die": DieState,
-		"dieloop": DieLoopState
+		"die": DeadState
 	}
 
 

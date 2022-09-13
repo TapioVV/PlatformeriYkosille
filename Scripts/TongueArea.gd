@@ -6,6 +6,7 @@ var attacking: bool = false
 
 signal enemyHit
 
+onready var tongueSprite = get_node("TongueSprite")
 onready var tongueHitBox = get_node("TongueHitBox")
 
 func _on_PlayerBody_attacked():
@@ -30,10 +31,14 @@ func _physics_process(_delta):
 
 
 func _on_PlayerBody_looked_left():
+	tongueSprite.flip_h = true
+	tongueSprite.position.x = -32
 	tongueHitBox.rotation_degrees = 90
 
 
 func _on_PlayerBody_looked_right():
+	tongueSprite.flip_h = false
+	tongueSprite.position.x = 32
 	tongueHitBox.rotation_degrees = -90
 
 
