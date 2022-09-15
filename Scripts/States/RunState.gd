@@ -3,7 +3,7 @@ extends PlayerState
 class_name RunState
 
 func _ready():
-	animation_player.play("AardvarkWalkAnim")
+	animation_player.play("AardvarkWalkAnim", 0 , player.runAnimationSpeed)
 	player.velocity.y = 0
 
 func _physics_process(delta):

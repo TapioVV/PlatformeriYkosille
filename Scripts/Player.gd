@@ -5,6 +5,7 @@ class_name player
 const ACCELERATION = 2800
 const DEACCELERATION = 3800
 
+export(int) var health 
 export(float) var timeToJumpPeak = .3
 export(int) var jumpHeight = 15
 export(int) var jumpDistance = 150
@@ -13,12 +14,14 @@ export(float) var smallJump
 export(float) var damageTime
 
 export(bool) var attackEnded
- 
+export(float) var attackAnimationSpeed 
+export(float) var runAnimationSpeed
 
 #Less is more
 export(int) var jumpControlDeacceleration
 export(int) var jumpControlAcceleration 
 
+var hitPhysicsBody
 onready var jumpTimer = get_node("JumpTimer")
 onready var damageTimer = get_node("DamageTimer")
 onready var characterSprite = get_node("CharacterSprite")
@@ -70,4 +73,5 @@ func _physics_process(_delta):
 
 func _on_DamageHitBox_body_entered(body):
 	if damaged == false:
+		hitPhysicsBody = body
 		damaged = true

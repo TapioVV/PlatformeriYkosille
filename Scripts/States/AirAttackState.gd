@@ -3,7 +3,7 @@ extends PlayerState
 class_name AirAttackState
 
 func _ready():
-	animation_player.play("AardvarkAttackAnim")
+	animation_player.play("AardvarkAttackAnim", 0, player.attackAnimationSpeed)
 	player.attack()
 
 

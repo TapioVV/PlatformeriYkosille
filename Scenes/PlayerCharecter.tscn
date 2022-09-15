@@ -11,7 +11,7 @@
 [ext_resource path="res://Animation/Aardvark/AardvarkDamagedAnim .tres" type="Animation" id=9]
 [ext_resource path="res://Animation/Aardvark/AardvarkDeadInAirAnim.tres" type="Animation" id=10]
 [ext_resource path="res://Animation/Aardvark/AardvarkDeadOnGroundAnim.tres" type="Animation" id=11]
-[ext_resource path="res://Sprites/Aardvark/aardvark_tongue_eject.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Aardvark/aardvark_idle.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.5, 28 )
@@ -27,6 +27,7 @@ position = Vector2( 6.10352e-05, 6.10352e-05 )
 collision_layer = 2
 collision_mask = 9
 script = ExtResource( 3 )
+health = 3
 timeToJumpPeak = 0.4
 jumpHeight = 120
 jumpDistance = 325
@@ -34,15 +35,15 @@ jumpBufferTime = 0.2
 smallJump = 1.5
 damageTime = 0.5
 attackEnded = true
+attackAnimationSpeed = 2.0
+runAnimationSpeed = 1.8
 jumpControlDeacceleration = 8
 jumpControlAcceleration = 4
 
 [node name="CharacterSprite" type="Sprite" parent="."]
 scale = Vector2( 0.265, 0.265 )
-z_index = 2
+z_index = 5
 texture = ExtResource( 12 )
-hframes = 2
-frame = 1
 
 [node name="BodyHitBox" type="CollisionShape2D" parent="."]
 position = Vector2( 3.49994, 1.99994 )
@@ -70,6 +71,7 @@ shape = SubResource( 5 )
 visible = false
 position = Vector2( 31.9999, -15.0001 )
 scale = Vector2( 0.307691, 0.307691 )
+z_index = 4
 texture = ExtResource( 1 )
 hframes = 4
 frame = 3

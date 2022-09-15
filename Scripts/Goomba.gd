@@ -38,5 +38,6 @@ func _on_LeftGroundChecker_body_exited(_body):
 	moveVector.x = moveSpeed
 	pass # Replace with function body.
 
+
 func _on_get_hit():
 	queue_free()
