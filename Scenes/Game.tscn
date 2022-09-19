@@ -4,47 +4,60 @@
 [ext_resource path="res://Scenes/WhitePlatform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/BreakableBlock.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Goomba.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/DeathZone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Mosquito.tscn" type="PackedScene" id=6]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( 364, 270, 371, 381, 269, 381, -406, 479, -418, 42, 1003, 43, 1002, 467, 620, 474, 612, 375, 505, 370, 502, 269, 262, 474 )
+polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5, 0 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 8, 9, 10, 5 ), PoolIntArray( 2, 11, 3 ), PoolIntArray( 0, 2, 3 ), PoolIntArray( 0, 5, 10 ) ]
+outlines = [ PoolVector2Array( -418, 42, -406, 479, 262, 474, 269, 381, 371, 381, 364, 270, 502, 269, 505, 370, 612, 375, 620, 474, 1002, 467, 1003, 43 ) ]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="BreakableBlock" parent="." instance=ExtResource( 3 )]
 position = Vector2( 99, 413.852 )
 
-[node name="KinematicBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 650, 453 )
-
 [node name="GoombaBody" parent="." instance=ExtResource( 4 )]
-position = Vector2( 264, 461 )
+position = Vector2( -128, 458 )
 
-[node name="StaticBody2D" parent="GoombaBody" instance=ExtResource( 5 )]
-position = Vector2( 713, 9 )
+[node name="World" type="Node2D" parent="."]
 
-[node name="WhiteBlock" parent="." instance=ExtResource( 2 )]
-position = Vector2( 578, 542.254 )
-scale = Vector2( 443, 50 )
+[node name="WhiteBlock" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 299.5, 542.254 )
+scale = Vector2( 721.5, 50 )
 
-[node name="WhiteBlock2" parent="." instance=ExtResource( 2 )]
+[node name="WhiteBlock2" parent="World" instance=ExtResource( 2 )]
 position = Vector2( 536, 442.495 )
 
-[node name="WhiteBlock5" parent="." instance=ExtResource( 2 )]
+[node name="WhiteBlock5" parent="World" instance=ExtResource( 2 )]
 position = Vector2( 436, 442.495 )
 
-[node name="WhiteBlock6" parent="." instance=ExtResource( 2 )]
+[node name="WhiteBlock6" parent="World" instance=ExtResource( 2 )]
 position = Vector2( 436, 342.736 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 508, 321.994 )
-current = true
+[node name="WhiteBlock7" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 336, 447 )
 
-[node name="WhiteBlock3" parent="." instance=ExtResource( 2 )]
+[node name="WhiteBlock3" parent="World" instance=ExtResource( 2 )]
 position = Vector2( 795, 315.08 )
 scale = Vector2( 68, 8.88941 )
 
-[node name="WhiteBlock4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 886, 184.702 )
+[node name="WhiteBlock4" parent="World" instance=ExtResource( 2 )]
+position = Vector2( 736, 401 )
+rotation = -1.17653
 scale = Vector2( 68, 8.88941 )
 
-[node name="KinematicBody2D2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 744, 416 )
+[node name="Navigation2D" type="Navigation2D" parent="."]
+
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
+navpoly = SubResource( 1 )
+
+[node name="MosquitoBody" parent="Navigation2D" instance=ExtResource( 6 )]
+position = Vector2( 842, 412 )
+path_to_player = NodePath("../../PlayerBody")
+
+[node name="PlayerBody" parent="." instance=ExtResource( 1 )]
+position = Vector2( 214, 448 )
+
+[node name="Camera2D" type="Camera2D" parent="PlayerBody"]
+position = Vector2( -6.10352e-05, -6.10352e-05 )
+current = true
