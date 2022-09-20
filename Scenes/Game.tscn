@@ -7,9 +7,9 @@
 [ext_resource path="res://Scenes/Mosquito.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( 364, 270, 371, 381, 269, 381, -406, 479, -418, 42, 1003, 43, 1002, 467, 620, 474, 612, 375, 505, 370, 502, 269, 262, 474 )
+vertices = PoolVector2Array( 364, 270, 371, 381, 269, 381, -406, 479, -418, 42, 1003, 43, 1003, 472, 620, 474, 612, 375, 505, 370, 502, 269, 262, 474 )
 polygons = [ PoolIntArray( 0, 1, 2 ), PoolIntArray( 3, 4, 5, 0 ), PoolIntArray( 5, 6, 7, 8 ), PoolIntArray( 8, 9, 10, 5 ), PoolIntArray( 2, 11, 3 ), PoolIntArray( 0, 2, 3 ), PoolIntArray( 0, 5, 10 ) ]
-outlines = [ PoolVector2Array( -418, 42, -406, 479, 262, 474, 269, 381, 371, 381, 364, 270, 502, 269, 505, 370, 612, 375, 620, 474, 1002, 467, 1003, 43 ) ]
+outlines = [ PoolVector2Array( -418, 42, -406, 479, 262, 474, 269, 381, 371, 381, 364, 270, 502, 269, 505, 370, 612, 375, 620, 474, 1003, 472, 1003, 43 ) ]
 
 [node name="Node2D" type="Node2D"]
 
@@ -41,18 +41,14 @@ position = Vector2( 336, 447 )
 position = Vector2( 795, 315.08 )
 scale = Vector2( 68, 8.88941 )
 
-[node name="WhiteBlock4" parent="World" instance=ExtResource( 2 )]
-position = Vector2( 736, 401 )
-rotation = -1.17653
-scale = Vector2( 68, 8.88941 )
-
 [node name="Navigation2D" type="Navigation2D" parent="."]
+edge_connection_margin = 10.0
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 navpoly = SubResource( 1 )
 
 [node name="MosquitoBody" parent="Navigation2D" instance=ExtResource( 6 )]
-position = Vector2( 842, 412 )
+position = Vector2( 851, 424 )
 path_to_player = NodePath("../../PlayerBody")
 
 [node name="PlayerBody" parent="." instance=ExtResource( 1 )]

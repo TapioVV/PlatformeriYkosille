@@ -17,27 +17,31 @@ var usedDelta
 onready var startPosition = position
 
 func _ready():
-	_update_pathfinding()
-	_timer.connect("timeout", self, "_update_pathfinding")
 	state = STATE.IDLE
+	agent_2d.set_target_location(startPosition)
+	_timer.set_paused(true)
+	_timer.connect("timeout", self, "_pathfind_to_player")
 	pass # Replace with function body.
 
 
 
-func _process(delta):
+func _physics_process(delta):
 	usedDelta = delta
 	match state:
 		STATE.IDLE:
-			null
+			move_to_target()
 		STATE.FOLLOW:
-			_onFollow()
+			move_to_target()
 		STATE.GOBACK:
 			null
+
+
+
 
 func _on_get_hit():
 	queue_free()
 
-func _onFollow():
+func move_to_target():
 	if agent_2d.is_navigation_finished():
 		return
 
@@ -56,16 +60,19 @@ func _onFollow():
 
 	_velocity = move_and_slide(_velocity)
 
-func _update_pathfinding():
+func _pathfind_to_player():
 	agent_2d.set_target_location(player.global_position)
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
+		_timer.set_paused(false)
 		state = STATE.FOLLOW
 	pass # Replace with function body.
 
 
 func _on_Area2D_body_exited(body):
-#	if body.is_in_group("player"):
-#		state = STATE.IDLE
+	if body.is_in_group("player"):
+		_timer.set_paused(true)
+		agent_2d.set_target_location(startPosition)
+		state = STATE.IDLE
 	pass # Replace with function body.
